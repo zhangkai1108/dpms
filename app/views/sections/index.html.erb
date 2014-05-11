@@ -1,0 +1,28 @@
+<div class="col-md-12">
+  <div class="panel panel-info">
+    <div class="panel-heading col-md-12">
+       <h3 class="panel-title">菜单维护</h3>
+    </div>
+    <div class="panel-body">
+      <div class="col-md-12" style="float:right">
+            <a href="sections/new" class="btn btn-default  active" role="button">增加</a>
+      </div>
+<%= grid(@sections) do |g|
+  g.column name: 'id'  do |section|
+    section.id
+  end
+  g.column name: '操作名称'  do |section|
+    section.name
+  end
+  g.column name: '请求URL' do |section|
+    section.url
+  end
+  g.column name: '操作' do |section|
+    link_to('Edit', edit_section_path(section))
+  end
+end -%>
+    </div>
+  </div>
+</div>
+
+

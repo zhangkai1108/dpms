@@ -1,0 +1,14 @@
+<script type="text/javascript">
+    $(document).ready(function () {
+<% @sections.each do |section|  %>
+          $.ajax({
+            url: '<%= section.url %>',
+            async: false,
+            success: function (data) {
+                $("#contentId").append(data);
+            } });
+  <% end %>
+    });
+</script>
+<div id="contentId" >
+</div>

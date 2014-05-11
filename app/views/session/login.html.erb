@@ -1,0 +1,7 @@
+<%= simple_form_for @identity, :url => '/auth/identity/callback' do |f| %>
+    <h1>login</h1>
+    <%# specify :input_html to avoid params nesting %>
+    <%= f.input :email, :input_html => {:name => 'email'} %>
+    <%= f.input :password, :as => 'password', :input_html => {:name => 'password'} %>
+    <button type='submit'>登陆</button>
+<% end %>
