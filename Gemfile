@@ -1,29 +1,34 @@
 source 'http://ruby.taobao.org'
 
-gem 'rails', '3.2.13'
+gem 'rails', '4.1.1'
 
+gem 'protected_attributes', github: 'rails/protected_attributes'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'mysql2','=0.3.11'
+gem 'tzinfo-data', platforms: [:mingw, :mswin  ]
+
+gem 'mysql2'
 #gem 'mysql', :require => 'mysql'
 
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
-
+  gem 'coffee-rails'
+  gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails'
+  gem 'sass-rails', '~> 4.0.2'
+  gem 'bootstrap-sass', '~> 3.1.1.0'
+  gem 'jquery-rails'
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
-
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'jquery-rails'
-
 gem 'anjlab-widgets'
 
+
+
+gem 'simple_form', '~> 3.1.0.rc1', github: 'plataformatec/simple_form'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
@@ -40,7 +45,6 @@ gem 'anjlab-widgets'
 # gem 'debugger'
 
 #form组件
-  gem 'simple_form'
 
 gem 'wice_grid'
 
@@ -55,5 +59,7 @@ gem 'omniauth-identity'
 
 gem 'bcrypt-ruby', '~> 3.0.0'
 
-gem 'anjlab-bootstrap-rails', '>= 2.1', :require => 'bootstrap-rails'
-gem 'bootstrap_helper', "2.0.0.1"
+
+
+gem 'bootstrap_helper'
+

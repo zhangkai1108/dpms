@@ -1,7 +1,4 @@
 Dpms::Application.routes.draw do
-  resources :test2ks
-
-
   get "session/create"
 
   get "session/login"
