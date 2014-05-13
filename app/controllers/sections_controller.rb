@@ -2,7 +2,7 @@ class SectionsController < ApplicationController
   # GET /sections
   # GET /sections.json
   def index
-    @sections = initialize_grid(Section, per_page: 1)
+    @sections = initialize_grid(Section, per_page: 15)
 
     respond_to do |format|
       format.html # index.html.erb

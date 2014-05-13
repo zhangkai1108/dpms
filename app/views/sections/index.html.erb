@@ -1,26 +1,32 @@
 <div class="col-md-12">
-  <div class="panel panel-info">
+  <div class="panel panel-primary">
     <div class="panel-heading col-md-12">
        <h3 class="panel-title">菜单维护</h3>
     </div>
     <div class="panel-body">
-      <div class="col-md-12" style="float:right">
-            <a href="sections/new" class="btn btn-default  active" role="button">增加</a>
+
+            <%= grid(@sections) do |g|
+              g.column name: 'id'  do |section|
+                section.id
+              end
+              g.column name: '操作名称' , attribute: 'name'  do |section|
+                section.name
+              end
+              g.column name: '请求URL', attribute: 'url' do |section|
+                section.url
+              end
+              g.column name: '排序' do |section|
+                section.sort
+              end
+              g.column  do |section|
+                link_to('修改', edit_section_path(section))
+                link_to '删除', section, method: :delete, data: { confirm: '你确定要删除吗?' }
+              end
+
+            end -%>
+      <div class="col-md-2 col-md-offset-5">
+        <a href="sections/new" class="btn btn-primary btn-lg active" role="button">增加</a>
       </div>
-<%= grid(@sections) do |g|
-  g.column name: 'id'  do |section|
-    section.id
-  end
-  g.column name: '操作名称'  do |section|
-    section.name
-  end
-  g.column name: '请求URL' do |section|
-    section.url
-  end
-  g.column name: '操作' do |section|
-    link_to('Edit', edit_section_path(section))
-  end
-end -%>
     </div>
   </div>
 </div>
