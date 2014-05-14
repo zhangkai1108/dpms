@@ -2,9 +2,7 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.all
     @sections = Section.find_all_by_uid(1)
-    @products_grid = initialize_grid(Product,per_page: 5)
     respond_to do |format|
       format.html
     end
