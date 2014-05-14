@@ -1,4 +1,6 @@
 Dpms::Application.routes.draw do
+  resources :users
+
   get "session/create"
 
   get "session/login"
