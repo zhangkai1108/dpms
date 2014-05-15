@@ -1,31 +1,36 @@
-<h1>Listing users</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Email</th>
-      <th>Qq</th>
-      <th>Tel</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div class="center-block">
+  <form >
+  <div class="col-md-2">
+    <%=link_to '新增', new_user_path,class: 'btn btn-primary btn active' %>
+    <%=button_to '删除', data: { confirm: '你确定要删除吗?' } ,class: 'btn btn-primary btn active' %>
+    <p id="notice"><%= notice %></p>
+  </div>
+  <br><br>
 
-  <tbody>
-    <% @users.each do |user| %>
-      <tr>
-        <td><%= user.name %></td>
-        <td><%= user.email %></td>
-        <td><%= user.qq %></td>
-        <td><%= user.tel %></td>
-        <td><%= link_to 'Show', user %></td>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <%= grid(@users) do |g|
+    g.action_column do |task|
+      true
+    end
+    g.column name: 'id'  do |section|
+      section.id
+    end
+    g.column name: '名字' , attribute: 'name'  do |section|
+      section.name
+    end
+    g.column name: '邮箱', attribute: 'email' do |section|
+      section.email
+    end
+    g.column name: 'qq' , attribute: 'qq' do |section|
+      section.qq
+    end
+    g.column name: '电话'  , attribute: 'tel'do |section|
+      section.tel
+    end
 
-<br>
-
-<%= link_to 'New User', new_user_path %>
+    g.column  do |section|
+      link_to('修改', edit_user_path(section))
+    end
+  end -%>
+  </form>
+</div>

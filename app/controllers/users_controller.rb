@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
   # GET /users
   def index
-    @users = User.all
+    @users = initialize_grid(User, per_page: 15,:name => 'g')
   end
 
   # GET /users/1
@@ -22,18 +22,20 @@ class UsersController < ApplicationController
   # POST /users
   def create
     @user = User.new(user_params)
-
     if @user.save
-      redirect_to @user, notice: 'User was successfully created.'
+      redirect_to users_path, notice: 'User was successfully created.'
     else
       render :new
     end
   end
 
+  def batchDelete
+
+  end
   # PATCH/PUT /users/1
   def update
     if @user.update(user_params)
-      redirect_to @user, notice: 'User was successfully updated.'
+      redirect_to users_path, notice: 'User was successfully updated.'
     else
       render :edit
     end
@@ -41,6 +43,9 @@ class UsersController < ApplicationController
 
   # DELETE /users/1
   def destroy
+    if params[:g] && params[:g][:selected]
+      @selected = params[:g][:selected]
+    end
     @user.destroy
     redirect_to users_url, notice: 'User was successfully destroyed.'
   end

@@ -2,7 +2,7 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @sections = Section.find_all_by_uid(1)
+    @sections = Section.all
     respond_to do |format|
       format.html
     end

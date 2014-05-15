@@ -1,6 +1,6 @@
 Dpms::Application.routes.draw do
   resources :users
-
+  resources :roles
   get "session/create"
 
   get "session/login"
@@ -8,6 +8,9 @@ Dpms::Application.routes.draw do
   get "products/inside"
 
   get "products/inside1"
+
+  post "users/batchDelete"
+
   resources :products
   resources :sections
 

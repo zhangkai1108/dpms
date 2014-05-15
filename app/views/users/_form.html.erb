@@ -1,14 +1,17 @@
+<div class="col-md-8 col-md-offset-2">
+  <div class="panel panel-primary">
+    <div class="panel-heading"><%= @title %></div>
+    <div class="panel-body">
 <%= simple_form_for(@user) do |f| %>
   <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <%= f.input :name %>
-    <%= f.input :email %>
-    <%= f.input :qq %>
-    <%= f.input :tel %>
-  </div>
-
-  <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.input :name, placeholder: '名称',label: '名称', hint: '用户的登陆名称' %>
+    <%= f.input :email , placeholder: '邮箱',label: '邮箱', hint: ''%>
+    <%= f.input :qq , placeholder: 'QQ',label: 'QQ', hint: ''%>
+    <%= f.input :tel , placeholder: '电话',label: '电话', hint: ''%>
+   <div class="col-md-2 col-md-offset-5">
+    <%= f.button :submit ,@title+"用户"%>
   </div>
 <% end %>
+        </div>
+      </div>
+    </div>
