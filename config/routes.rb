@@ -10,6 +10,7 @@ Dpms::Application.routes.draw do
   get "products/inside1"
 
   post "users/batchDelete"
+  post "roles/batchDelete"
 
   resources :products
   resources :sections

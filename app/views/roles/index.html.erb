@@ -1,23 +1,33 @@
-<h1>Listing roles</h1>
+<ol class="breadcrumb">
+  <li><a href="/">首页</a></li>
+  <li class="active">角色管理</li>
+</ol>
+<div class="center-block">
+  <form class='button_to' method='post' action='roles/batchDelete'>
+    <div class="col-md-2">
+      <%=link_to '新增', new_role_path,class: 'btn btn-primary btn active' %>
+      <input value='删除' type='submit' data-disable-with='加载...' class= 'btn btn-primary btn active' data-confirm='你确定要删除吗?' remote ='true'/>
+      <p id="notice"><%= notice %></p>
+    </div>
+    <br><br>
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+    <%= grid(@roles) do |g|
+      g.action_column do |task|
+        true
+      end
+      g.column name: 'id'  do |section|
+        section.id
+      end
+      g.column name: '角色名' , attribute: 'rName'  do |section|
+        section.rName
+      end
+      g.column name: '角色描述', attribute: 'rDesc' do |section|
+        section.rDesc
+      end
+      g.column  do |section|
+        link_to('修改', edit_role_path(section))
+      end
+    end -%>
+  </form>
+</div>
 
-  <tbody>
-    <% @roles.each do |role| %>
-      <tr>
-        <td><%= link_to 'Show', role %></td>
-        <td><%= link_to 'Edit', edit_role_path(role) %></td>
-        <td><%= link_to 'Destroy', role, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Role', new_role_path %>

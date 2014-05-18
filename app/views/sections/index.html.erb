@@ -1,11 +1,20 @@
-<div class="col-md-12">
-  <div class="panel panel-primary">
-    <div class="panel-heading col-md-12">
-       <h3 class="panel-title">菜单维护</h3>
+<ol class="breadcrumb">
+  <li><a href="/">首页</a></li>
+  <li class="active">菜单管理</li>
+</ol>
+<div class="center-block">
+  <form class='button_to' method='post' action='sections/batchDelete'>
+    <div class="col-md-2">
+      <%=link_to '新增',new_section_path,class: 'btn btn-primary btn active'%>
+      <input value='删除' type='submit' data-disable-with='加载...' class= 'btn btn-primary btn active' data-confirm='你确定要删除吗?' remote ='true'/>
+      <p id="notice"><%= notice %></p>
     </div>
-    <div class="panel-body">
+    <br><br>
 
             <%= grid(@sections) do |g|
+              g.action_column do |task|
+                true
+              end
               g.column name: 'id'  do |section|
                 section.id
               end
@@ -20,15 +29,10 @@
               end
               g.column  do |section|
                 link_to('修改', edit_section_path(section))
-                link_to '删除', section, method: :delete, data: { confirm: '你确定要删除吗?' }
               end
 
             end -%>
-      <div class="col-md-2 col-md-offset-5">
-        <a href="sections/new" class="btn btn-primary btn-lg active" role="button">增加</a>
-      </div>
-    </div>
+      </form>
   </div>
-</div>
 
 

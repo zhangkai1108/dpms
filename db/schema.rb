@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140514151815) do
+ActiveRecord::Schema.define(version: 20140518132524) do
 
   create_table "identities", force: true do |t|
     t.string   "email"
@@ -41,6 +41,11 @@ ActiveRecord::Schema.define(version: 20140514151815) do
     t.integer "section_id"
   end
 
+  create_table "roles_users", force: true do |t|
+    t.integer "role_id"
+    t.integer "user_id"
+  end
+
   create_table "sections", force: true do |t|
     t.string   "name"
     t.string   "url"
@@ -57,11 +62,7 @@ ActiveRecord::Schema.define(version: 20140514151815) do
     t.string   "tel"
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "users_roles", force: true do |t|
-    t.integer "role_id"
-    t.integer "user_id"
+    t.boolean  "sFlag",      default: true
   end
 
 end

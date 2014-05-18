@@ -1,9 +1,10 @@
+#encoding: utf-8
 class RolesController < ApplicationController
   before_action :set_role, only: [:show, :edit, :update, :destroy]
 
   # GET /roles
   def index
-    @roles = Role.all
+    @roles = initialize_grid(Role,:per_page=>15,:name=>"roleList")
   end
 
   # GET /roles/1
@@ -14,7 +15,16 @@ class RolesController < ApplicationController
   def new
     @role = Role.new
   end
-
+  def batchDelete
+    begin
+      @selectIds = params[:roleList][:selected].join(',')
+      rlt = Role.destroy_all("id in (#{@selectIds})")
+      redirect_to roles_path ,notice: '删除角色成功.'
+    rescue Exception => ex
+      logger.error(ex)
+      redirect_to roles_path ,notice: '删除角色成功.'
+    end
+  end
   # GET /roles/1/edit
   def edit
   end
@@ -24,7 +34,7 @@ class RolesController < ApplicationController
     @role = Role.new(role_params)
 
     if @role.save
-      redirect_to @role, notice: 'Role was successfully created.'
+      redirect_to roles_path, notice: '创建角色成功.'
     else
       render :new
     end
@@ -33,7 +43,7 @@ class RolesController < ApplicationController
   # PATCH/PUT /roles/1
   def update
     if @role.update(role_params)
-      redirect_to @role, notice: 'Role was successfully updated.'
+      redirect_to roles_path, notice: '更新角色成功.'
     else
       render :edit
     end
@@ -42,7 +52,7 @@ class RolesController < ApplicationController
   # DELETE /roles/1
   def destroy
     @role.destroy
-    redirect_to roles_url, notice: 'Role was successfully destroyed.'
+    redirect_to roles_url, notice: '删除角色成功.'
   end
 
   private
