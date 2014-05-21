@@ -10,8 +10,7 @@
     <p id="notice"><%= notice %></p>
   </div>
   <br><br>
-
-  <%= grid(@users) do |g|
+  <%= grid(@users,:extra_request_parameters => {:aa=>"test"}) do |g|
     g.action_column param_name:'sFlag' do |task|
       true
     end

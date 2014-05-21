@@ -1,14 +1,18 @@
 #encoding: utf-8
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  # before_action :set_user, only: [:show, :edit, :update, :destroy],:except => [:queryRole]
 
   # GET /users
   def index
     @users = initialize_grid(User, per_page: 15,:name => 'g')
     aa = User.find_by_sql("select id from users where sFlag = 1")
-    @params = {}
-    @params[:g] = {}
-    @params[:g][:sFlag] = aa
+  end
+
+  def queryRole
+      aa = User.find_by_sql("SELECT r.id,r.rName text,if(ur.user_id is null,'false','true') checked  FROM `roles` r left join roles_users ur on ur.role_id = r.id")
+      respond_to do |format|
+        format.json { render :json => aa.as_json}
+      end
   end
 
   # GET /users/1
@@ -63,7 +67,9 @@ class UsersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
-      @user = User.find(params[:id])
+      if(params[:id])
+        @user = User.find(params[:id])
+      end
     end
 
     # Only allow a trusted parameter "white list" through.
