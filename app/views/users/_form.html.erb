@@ -2,53 +2,44 @@
   <div class="panel panel-primary">
     <div class="panel-heading"><%= @title %></div>
     <div class="panel-body">
-      <div class="col-md-8">
         <%= simple_form_for(@user) do |f| %>
+          <input type="hidden" id="ids" name="ids" value="">
           <%= f.error_notification %>
-            <%= f.input :name, placeholder: '名称',label: '名称', hint: '用户的登陆名称' %>
-            <%= f.input :email , placeholder: '邮箱',label: '邮箱', hint: ''%>
-            <%= f.input :qq , placeholder: 'QQ',label: 'QQ', hint: ''%>
-            <%= f.input :tel , placeholder: '电话',label: '电话', hint: ''%>
-           <div class="col-md-2 col-md-offset-5">
-            <%= f.button :submit ,@title+"用户"%>
+          <div class="col-md-8">
+              <%= f.input :name, placeholder: '名称',label: '名称', hint: '用户的登陆名称' %>
+                <%= f.input :email , placeholder: '邮箱',label: '邮箱', hint: ''%>
+                <%= f.input :qq , placeholder: 'QQ',label: 'QQ', hint: ''%>
+                <%= f.input :tel , placeholder: '电话',label: '电话', hint: ''%>
+            <div class="col-md-2 col-md-offset-5">
+              <%= f.button :button ,@title+"用户",:type=>:button,:id=>"edit_user_id"%>
+            </div>
+            </div>
+            <div class="col-md-4">
+              <ul id="roleTree" class="easyui-tree " style="margin-top: 15px">
+              </ul>
             </div>
         <% end %>
-        </div>
-          <div class="col-md-4">
-            <ul class="easyui-tree">
-              <li>
-                <span>My Documents</span>
-                <ul>
-                  <li data-options="state:'closed'">
-                    <span>Photos</span>
-                    <ul>
-                      <li>
-                        <span>Friend</span>
-                      </li>
-                      <li>
-                        <span>Wife</span>
-                      </li>
-                      <li>
-                        <span>Company</span>
-                      </li>
-                    </ul>
-                  </li>
-                  <li>
-                    <span>Program Files</span>
-                    <ul>
-                      <li>Intel</li>
-                      <li>Java</li>
-                      <li>Microsoft Office</li>
-                      <li>Games</li>
-                    </ul>
-                  </li>
-                  <li>index.html</li>
-                  <li>about.html</li>
-                  <li>welcome.html</li>
-                </ul>
-              </li>
-            </ul>
-          </div>
+
+
+      <script type="text/javascript">
+          $(function(){
+               $("#roleTree").tree({
+                   url:"/user/role?id=<%=@user.id%>",
+                   method:'get',
+                   checkbox:true
+               });
+              $("#edit_user_id").click(function(){
+                  var nodes = $('#roleTree').tree('getChecked');
+                  var s = '';
+                  for(var i=0; i<nodes.length; i++){
+                      if (s != '') s += ',';
+                      s += nodes[i].id;
+                  }
+                   $("#ids").val(s);
+                  $(".simple_form").submit();
+              });
+          });
+      </script>
         </div>
       </div>
     </div>

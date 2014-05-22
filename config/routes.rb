@@ -1,7 +1,5 @@
 Dpms::Application.routes.draw do
-  resources :users do
-    get 'queryRole',:on=>:member
-  end
+  resources :users
   resources :roles
   get "session/create"
 
@@ -11,7 +9,7 @@ Dpms::Application.routes.draw do
 
   get "products/inside1"
 
-
+  get 'user/role' ,:to =>'users#role'
 
   post "users/batchDelete"
   post "roles/batchDelete"

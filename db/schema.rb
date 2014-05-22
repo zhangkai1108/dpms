@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140518132524) do
+ActiveRecord::Schema.define(version: 20140522130504) do
 
   create_table "identities", force: true do |t|
     t.string   "email"
@@ -53,6 +53,11 @@ ActiveRecord::Schema.define(version: 20140518132524) do
     t.integer  "uid"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "tree_models", force: true do |t|
+    t.string  "text"
+    t.boolean "checked"
   end
 
   create_table "users", force: true do |t|
