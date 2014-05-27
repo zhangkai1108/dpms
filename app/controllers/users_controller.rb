@@ -13,7 +13,6 @@ class UsersController < ApplicationController
       respond_to do |format|
         format.html {render json:  @aa.as_json , :layout => false}
       end
-
   end
 
   # GET /users/1

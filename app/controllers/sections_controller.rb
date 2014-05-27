@@ -10,6 +10,12 @@ class SectionsController < ApplicationController
     end
   end
 
+  def role_section
+    @aa= TreeModel.find_by_sql("SELECT s.id,s.name text,if(rs.role_id is null,false,true) checked  FROM sections s left join roles_sections rs on s.id = rs.section_id and rs.role_id = #{params[:roleid]}");
+    respond_to do |format|
+      format.html {render json:  @aa.as_json , :layout => false}
+    end
+  end
   # GET /sections/1
   # GET /sections/1.json
   def show

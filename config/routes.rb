@@ -10,6 +10,7 @@ Dpms::Application.routes.draw do
   get "products/inside1"
 
   get 'user/role' ,:to =>'users#role'
+  get 'section/role_section',:to=>'sections#role_section'
 
   post "users/batchDelete"
   post "roles/batchDelete"

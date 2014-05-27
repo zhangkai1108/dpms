@@ -2,18 +2,42 @@
   <div class="panel panel-primary">
     <div class="panel-heading"><%= @title %></div>
     <div class="panel-body">
-      <%= simple_form_for @role, html: {class: 'form-horizontal'},wapper: :horizontal_form   do |f| %>
-
-          <%= f.error_notification %>
-
-          <%= f.input :rName,label:'角色名称', placeholder: '角色名称' %>
-
-          <%= f.input :rDesc,label:'描述', placeholder: '描述' %>
-
+      <%= simple_form_for @role, html: {class: 'form-horizontal'}, wapper: :horizontal_form do |f| %>
+           <input type="hidden" id="ids" name="ids">
+          <div class="col-md-12">
+            <div class="col-md-8">
+              <%= f.error_notification %>
+              <%= f.input :rName, label: '角色名称', placeholder: '角色名称' %>
+              <%= f.input :rDesc, label: '描述', placeholder: '描述' %>
+            </div>
+            <div class="col-md-4">
+                <ul id="sections_tree" class="easyui-tree">
+                </ul>
+            </div>
+          </div>
           <div class="col-md-2 col-md-offset-5">
-            <%= f.button :submit, '提交'%>
+            <%= f.button :submit, '提交',:type=>:button,:id=>:section_tree_form %>
           </div>
       <% end %>
     </div>
+    <script type="text/javascript">
+      $(function(){
+          $("#sections_tree").tree({
+              url:"/section/role_section?roleid=<%= @role.id%>",
+              method:"get",
+              checkbox:true
+          });
+          $("#section_tree_form").click(function(){
+              var nodes = $('#sections_tree').tree('getChecked');
+              var s = '';
+              for(var i=0; i<nodes.length; i++){
+                  if (s != '') s += ',';
+                  s += nodes[i].id;
+              }
+              $("#ids").val(s);
+              $(".simple_form").submit();
+          });
+      });
+    </script>
   </div>
 </div>
