@@ -11,7 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140522130504) do
+ActiveRecord::Schema.define(version: 20140530054737) do
+
+  create_table "customs", force: true do |t|
+    t.string   "name"
+    t.string   "linkMan"
+    t.string   "mainMan"
+    t.string   "level"
+    t.string   "linkTel"
+    t.string   "mainTel"
+    t.text     "customDesc"
+    t.text     "customLove"
+    t.string   "operName"
+    t.integer  "addr"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "identities", force: true do |t|
     t.string   "email"
@@ -41,11 +56,6 @@ ActiveRecord::Schema.define(version: 20140522130504) do
     t.integer "section_id"
   end
 
-  create_table "roles_users", force: true do |t|
-    t.integer "role_id"
-    t.integer "user_id"
-  end
-
   create_table "sections", force: true do |t|
     t.string   "name"
     t.string   "url"
@@ -67,7 +77,11 @@ ActiveRecord::Schema.define(version: 20140522130504) do
     t.string   "tel"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "sFlag",      default: true
+  end
+
+  create_table "users_roles", force: true do |t|
+    t.integer "role_id"
+    t.integer "user_id"
   end
 
 end

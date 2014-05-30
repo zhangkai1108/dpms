@@ -34,22 +34,10 @@ class RolesController < ApplicationController
   # POST /roles
   def create
     @role = Role.new(role_params)
-    Role.transaction do
-      RolesSections.delete_all(" role_id = #{@role.id}")
-      if params[:ids]
-        idArray = params[:ids].split(',')
-        idArray.each { |rid|
-          @ur = RolesUsers.new()
-          @ur.user_id = @user.id
-          @ur.role_id= rid
-          @ur.save
-        }
-      end
-      if @role.save
-        redirect_to roles_path, notice: '创建角色成功.'
-      else
-        render :new
-      end
+    if @role.save
+      redirect_to roles_path, notice: '创建角色成功.'
+    else
+      render :new
     end
   end
 

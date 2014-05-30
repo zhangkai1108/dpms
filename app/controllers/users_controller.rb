@@ -5,7 +5,6 @@ class UsersController < ApplicationController
   # GET /users
   def index
     @users = initialize_grid(User, per_page: 15,:name => 'g')
-    aa = User.find_by_sql("select id from users where sFlag = 1")
   end
 
   def role

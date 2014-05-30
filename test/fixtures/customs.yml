@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: 众恒
+  linkMan: 张三
+  mainMan: 王总
+  level: A
+  linkTel: 13952622514
+  mainTel: 13952622513
+  customDesc: 
+  customLove: MyText
+  operName: MyString
+  addr: 1
+
+two:
+  name: MyString
+  linkMan: MyString
+  mainMan: MyString
+  level: MyString
+  linkTel: MyString
+  mainTel: MyString
+  customDesc: MyText
+  customLove: MyText
+  operName: MyString
+  addr: 1

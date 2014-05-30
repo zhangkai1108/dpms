@@ -1,0 +1,87 @@
+<div class="bs-example">
+  <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+      <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+      <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+      <div class="item active">
+        <img data-src="holder.js/900x500/auto/#777:#555/text:First slide" alt="First slide">
+      </div>
+      <div class="item">
+        <img data-src="holder.js/900x500/auto/#666:#444/text:Second slide" alt="Second slide">
+      </div>
+      <div class="item">
+        <img data-src="holder.js/900x500/auto/#555:#333/text:Third slide" alt="Third slide">
+      </div>
+    </div>
+    <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+    </a>
+    <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+    </a>
+  </div>
+</div><!-- /example -->
+
+<form id="new_custom" class="simple_form new_custom" novalidate="novalidate" method="post" action="/customs" accept-charset="UTF-8">
+  <div class="row">
+    <label for="custom_name" class="string optional control-label col-sm-1  control-label">名称</label>
+
+    <div class="col-sm-3">
+      <input type="text" name="custom[name]" id="custom_name" class="string optional form-control">
+    </div>
+    <label for="custom_linkMan" class="string optional control-label col-sm-1 control-label">联系人</label>
+
+    <div class="col-sm-3">
+      <input type="text" name="custom[linkMan]" id="custom_linkMan" class="string optional form-control"></div>
+    <label for="custom_mainMan" class="string optional control-label col-sm-1 control-label">主要负责人</label>
+
+    <div class="col-sm-3">
+      <input type="text" name="custom[mainMan]" id="custom_mainMan" class="string optional form-control"></div>
+  </div>
+  <div class="row">
+    <label for="custom_level" class="string optional control-label col-sm-1 control-label">级别</label>
+
+    <div class="col-sm-3">
+      <input type="text" name="custom[level]" id="custom_level" class="string optional form-control">
+
+    </div>
+    <label for="custom_linkTel" class="string optional control-label col-sm-1 control-label">联系人电话</label>
+
+    <div class="col-sm-3">
+      <input type="text" name="custom[linkTel]" id="custom_linkTel" class="string optional form-control"></div>
+    <label for="custom_mainTel" class="string optional control-label col-sm-1 control-label">主要负责人电话</label>
+
+    <div class="col-sm-3">
+      <input type="text" name="custom[mainTel]" id="custom_mainTel" class="string optional form-control"></div>
+  </div>
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="row">
+        <label for="custom_operName" class="string optional control-label col-sm-3 control-label">操作人员</label>
+
+        <div class="col-sm-9">
+          <input type="text" name="custom[operName]" id="custom_operName" class="string optional form-control"></div>
+      </div>
+      <div class="row">
+        <label for="custom_addr" class="integer optional control-label col-sm-3 control-label">地址</label>
+
+        <div class="col-sm-9">
+          <input type="number" step="1" name="custom[addr]" id="custom_addr" class="numeric integer optional form-control">
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-1" style="margin-top: 20px">
+      <label for="custom_customDesc" class="text optional control-label control-label" >客户资料</label>
+    </div>
+    <div class="col-sm-3">
+      <textarea name="custom[customDesc]" id="custom_customDesc" class="text optional form-control" rows="6"></textarea></div>
+    <div class="col-sm-1" style="margin-top: 20px">
+      <label for="custom_customLove" class="text optional  control-label control-label">客户爱好:</label>
+    </div>
+    <div class="col-sm-3">
+      <textarea name="custom[customLove]" id="custom_customLove" class="text optional form-control" rows="6"></textarea></div>
+  </div>
+</form>
